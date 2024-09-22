@@ -2,8 +2,21 @@ import React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import HomeIcon from '@mui/icons-material/Home';
-import { Box, Button, Container, Input, Link, Slider, Typography } from '@mui/material';
+import { alpha, Box, Button, Container, Input, Link, Slider, SliderProps, styled, Typography } from '@mui/material';
 import ProTip from "./ProTip";
+
+const SuccessSlider = styled(Slider)<SliderProps>(({ theme }) => ({
+  width: 300,
+  color: theme.palette.success.main,
+  '& .MuiSlider-thumb': {
+    '&:hover, &.Mui-focusVisible': {
+      boxShadow: `0px 0px 0px 8px ${alpha(theme.palette.success.main, 0.16)}`,
+    },
+    '&.Mui-active': {
+      boxShadow: `0px 0px 0px 14px ${alpha(theme.palette.success.main, 0.16)}`,
+    },
+  },
+}));
 
 type Inputs = {
   example: string,
@@ -54,6 +67,7 @@ export default function App() {
             borderRadius: '1px',
           }
         }} />
+        <SuccessSlider defaultValue={30} />
       {/** "handleSubmit" will validate your inputs before invoking "onSubmit" */}
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
