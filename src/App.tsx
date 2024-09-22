@@ -2,7 +2,7 @@ import React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import HomeIcon from '@mui/icons-material/Home';
-import { Box, Button, Container, Input, Link, Typography } from '@mui/material';
+import { Box, Button, Container, Input, Link, Slider, Typography } from '@mui/material';
 import ProTip from "./ProTip";
 
 type Inputs = {
@@ -46,7 +46,14 @@ export default function App() {
           Material UI Create React App example in TypeScript
         </Typography>
       <HomeIcon color="secondary"/>
-      <AccessAlarmIcon color="secondary"/>
+        <AccessAlarmIcon color="secondary" />
+        <Slider defaultValue={30} sx={{
+          width: 300,
+          color: 'success.main',
+          '& .MuiSlider-thumb': {
+            borderRadius: '1px',
+          }
+        }} />
       {/** "handleSubmit" will validate your inputs before invoking "onSubmit" */}
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* register your input into the hook by invoking the "register" function */}
