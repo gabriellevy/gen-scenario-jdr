@@ -2,11 +2,30 @@ import React from "react"
 import { useForm, SubmitHandler } from "react-hook-form"
 import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 import HomeIcon from '@mui/icons-material/Home';
-import { Button } from '@mui/material';
+import { Box, Button, Container, Input, Link, Typography } from '@mui/material';
+import ProTip from "./ProTip";
 
 type Inputs = {
   example: string,
   exampleRequired: string,
+}
+
+function Copyright() {
+  return (
+    <Typography
+      variant="body2"
+      align="center"
+      sx={{
+        color: 'text.secondary',
+      }}
+    >
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}.
+    </Typography>
+  );
 }
 
 export default function App() {
@@ -21,7 +40,11 @@ export default function App() {
   console.log(watch("example")) // watch input value by passing the name of it
 
   return (
-    <div>
+    <Container maxWidth="sm">
+      <Box sx={{ my: 4 }}>
+        <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
+          Material UI Create React App example in TypeScript
+        </Typography>
       <HomeIcon color="secondary"/>
       <AccessAlarmIcon color="secondary"/>
       {/** "handleSubmit" will validate your inputs before invoking "onSubmit" */}
@@ -35,9 +58,12 @@ export default function App() {
         {errors.exampleRequired && <span>This field is required</span>}
 
         <Button variant="contained">
-          <input type="submit" />
+          <Input type="submit" />
         </Button>
       </form>
-    </div>
+        <ProTip />
+        <Copyright />
+      </Box>
+    </Container>
   )
 }
